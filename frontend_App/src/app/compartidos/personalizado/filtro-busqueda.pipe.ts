@@ -6,7 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class FiltroBusquedaPipe implements PipeTransform {
 
   transform(items: any[], terminoBusqueda: string): any[] {
-    if  (!items|| !terminoBusqueda) {
+    if  (!items || !terminoBusqueda) {
       return items;
     }
 
