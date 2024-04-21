@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "PruebaTecnica": {
+    "frontend_App": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -24,7 +24,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/prueba-tecnica",
+            "outputPath": "dist/frontend-app",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -39,12 +39,7 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": [],
-            "server": "src/main.server.ts",
-            "prerender": true,
-            "ssr": {
-              "entry": "server.ts"
-            }
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -74,10 +69,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "PruebaTecnica:build:production"
+              "buildTarget": "frontend_App:build:production"
             },
             "development": {
-              "buildTarget": "PruebaTecnica:build:development"
+              "buildTarget": "frontend_App:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -85,7 +80,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "PruebaTecnica:build"
+            "buildTarget": "frontend_App:build"
           }
         },
         "test": {
@@ -111,6 +106,6 @@
     }
   },
   "cli": {
-    "analytics": "acf17e92-e50b-4ae5-8c1a-a6dd3f801fd9"
+    "analytics": false
   }
 }

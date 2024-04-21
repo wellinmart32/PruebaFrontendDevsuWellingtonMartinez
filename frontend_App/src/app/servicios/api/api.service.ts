@@ -19,8 +19,4 @@ export class ApiService {
     let cabeceras = this.cabeceras;
     return parametros ? this.http.get<any>(`${this.url}/${endpoint}`, { params: parametros, headers: cabeceras }) : this.http.get<any>(`${this.url}/${endpoint}`, { headers: cabeceras });
   }
-
-  // crearRegistro(endPoint) {
-
-  // }
 }

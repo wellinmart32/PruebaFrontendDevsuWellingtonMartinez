@@ -3,10 +3,9 @@ import { CommonModule } from '@angular/common';
 
 import { ProductosRoutingModule } from './productos-routing.module';
 import { ProductosComponent } from './productos.component';
-import { FiltroBusquedaPipe } from '../../compartidos/personalizado/filtro-busqueda.pipe';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { FormsModule } from '@angular/forms';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FiltroBusquedaPipe } from '../../compartidos/personalizado/filtro-busqueda.pipe';
 
 
 @NgModule({
@@ -17,8 +16,9 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     ProductosRoutingModule,
+    FormsModule,
     FontAwesomeModule,
-    FormsModule
+    ReactiveFormsModule
   ]
 })
 export class ProductosModule { }

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { faArrowLeft, faArrowRight, faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { ApiService } from '../../servicios/api/api.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-productos',
@@ -66,8 +66,6 @@ export class ProductosComponent {
   }
 
   irAPagina(pagina: number) {
-    alert('alerta');
-    console.log('yendo a pagina ' + pagina);
     if (pagina >= 1 && pagina <= this.paginasTotales) {
       this.paginaActual = pagina;
     }
