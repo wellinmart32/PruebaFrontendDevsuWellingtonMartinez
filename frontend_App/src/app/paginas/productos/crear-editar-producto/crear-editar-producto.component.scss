@@ -1,0 +1,124 @@
+.container {
+    width: 38rem;
+    margin: auto;
+    min-height: 32rem;
+    border-radius: 3px;
+    background-color: #fff;
+    flex-direction: column;
+
+    @media screen and (max-width: 900px) {
+        width: 100%;
+        height: auto;
+    }
+
+    @media screen and (max-width: 520px) {
+        .fila {
+            flex-direction: column;
+
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .columna {
+            width: 100%;
+        }
+    }
+}
+
+hr {
+    margin-bottom: .3rem;
+}
+
+.titulo {
+    text-align: center;
+    padding: .1rem 0;
+}
+
+.body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.form {
+    width: 100%;
+    margin: 0 2.5rem;
+}
+
+.fila {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 6rem;
+    width: 100%;
+    gap: 1.5rem;
+}
+
+.columna {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2.5rem 0;
+    gap: 2rem;
+}
+
+.footer button {
+    padding: 1.3rem 1.5rem;
+    font-weight: bold;
+    color: #4c5d87;
+    border-radius: 4px;
+    border: none;
+    opacity: 0.9;
+}
+
+.footer button:hover {
+    cursor: pointer;
+    opacity: 1;
+}
+
+.button-volver {
+    background-color: #caacd7;
+}
+
+.button-reiniciar {
+    background-color: #e9ecf3;
+}
+
+.button-enviar {
+    background-color: #f8e23f;
+}
+
+label {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+input {
+    border-radius: 4px;
+    margin-top: .3rem;
+    border-color: black;
+    padding: 1rem .8rem;
+}
+
+.columna div {
+    color: red;
+    font-size: 10px;
+    font-weight: normal;
+    margin-top: .3rem;
+}
+
+input.ng-invalid {
+    border: 1px solid red;
+}

@@ -1,0 +1,112 @@
+<div class="main-container">
+    <div class="container">
+        <div class="titulo">
+            <h2>Formulario de Registro</h2>
+        </div>
+        <hr>
+        <div class="body">
+            <form class="form" [formGroup]="formulario">
+                <div class="fila">
+                    <div *ngIf="editando" class="columna">
+                        <label>ID</label>
+                        <input readonly type="text" formControlName="id"
+                            placeholder="Ingrese un ID único" />
+                        <div *ngIf="controlTieneError('id', 'required')">
+                            ID es requerido.
+                        </div>
+                        <div *ngIf="controlTieneError('id', 'minlength')">
+                            ID debe tener al menos 3 caracteres.
+                        </div>
+                        <div *ngIf="controlTieneError('id', 'maxlength')">
+                            ID no puede tener más de 10 caracteres.
+                        </div>
+                        <div
+                            *ngIf="errorEnValidacion('id') && !controlTieneError('id', 'required') && !controlTieneError('id', 'minlength') && !controlTieneError('id', 'maxlength')">
+                            ID debe ser único.
+                        </div>
+                    </div>
+                    <div *ngIf="!editando" class="columna">
+                        <label>ID</label>
+                        <input type="text" formControlName="id"
+                            placeholder="Ingrese un ID único" />
+                        <div *ngIf="controlTieneError('id', 'required')">
+                            ID es requerido.
+                        </div>
+                        <div *ngIf="controlTieneError('id', 'minlength')">
+                            ID debe tener al menos 3 caracteres.
+                        </div>
+                        <div *ngIf="controlTieneError('id', 'maxlength')">
+                            ID no puede tener más de 10 caracteres.
+                        </div>
+                        <div
+                            *ngIf="errorEnValidacion('id') && !controlTieneError('id', 'required') && !controlTieneError('id', 'minlength') && !controlTieneError('id', 'maxlength')">
+                            ID debe ser único.
+                        </div>
+                    </div>
+                    <div class="columna">
+                        <label>Nombre</label>
+                        <input type="text" formControlName="nombre" placeholder="Ingrese un nombre" />
+                        <div *ngIf="controlTieneError('nombre', 'required')">
+                            Nombre es requerido.
+                        </div>
+                        <div *ngIf="controlTieneError('nombre', 'minlength')">
+                            Nombre debe tener al menos 5 caracteres.
+                        </div>
+                        <div *ngIf="controlTieneError('nombre', 'maxlength')">
+                            Nombre no puede tener más de 100 caracteres.
+                        </div>
+                    </div>
+                </div>
+                <div class="fila">
+                    <div class="columna">
+                        <label>Descripción</label>
+                        <input type="text" formControlName="descripcion" placeholder="Ingrese una descripción" />
+                        <div *ngIf="controlTieneError('descripcion', 'required')">
+                            Descripcion es requerido.
+                        </div>
+                        <div *ngIf="controlTieneError('descripcion', 'minlength')">
+                            Descripcion debe tener al menos 10 caracteres.
+                        </div>
+                        <div *ngIf="controlTieneError('descripcion', 'maxlength')">
+                            Descripcion no puede tener más de 200 caracteres.
+                        </div>
+                    </div>
+                    <div class="columna">
+                        <label>Logo</label>
+                        <input type="text" formControlName="logo" placeholder="Ingrese el url de una imagen" />
+                        <div *ngIf="controlTieneError('logo', 'required')">
+                            Logo es requerido.
+                        </div>
+                    </div>
+                </div>
+                <div class="fila">
+                    <div class="columna">
+                        <label>Fecha Liberación</label>
+                        <input type="text" formControlName="fechaLiberacion" (keyup)="llenarFechaRevision($event)"
+                            placeholder="dd/mm/aaaa" />
+                        <div *ngIf="controlTieneError('fechaLiberacion', 'required')">
+                            Fecha Liberación es requerido.
+                        </div>
+                        <div
+                            *ngIf="errorEnValidacion('fechaLiberacion') && !controlTieneError('fechaLiberacion', 'required')">
+                            Fecha Liberación debe ser mayor o igual a hoy.
+                        </div>
+                    </div>
+                    <div class="columna">
+                        <label>Fecha Revisión</label>
+                        <input readonly type="text" formControlName="fechaRevision" placeholder="dd/mm/aaaa" />
+                        <div *ngIf="controlTieneError('fechaRevision', 'required')">
+                            Fecha Revisión es requerido.
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="footer">
+            <button class="button-volver" (click)="volverAFormulario()">Volver</button>
+            <button class="button-reiniciar" (click)="reiniciarFormulario()">Reiniciar</button>
+            <button class="button-enviar" (click)="enviarFormulario()" [disabled]="formulario.invalid">Enviar</button>
+        </div>
+    </div>
+    <app-control-giratorio [mostrar]="mostrarControlGiratorio"></app-control-giratorio>
+</div>

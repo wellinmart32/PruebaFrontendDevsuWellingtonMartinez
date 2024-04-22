@@ -2,6 +2,7 @@
     <div class="container-square">
         <div class="container-search-button">
             <input class="search-bar" type="text" placeholder="Buscar..." [(ngModel)]="terminoBusqueda" />
+            <button class="button-add" (click)="agregarProducto()">Agregar</button>
         </div>
     </div>
 
@@ -25,6 +26,28 @@
                             <td>{{ producto.description }}</td>
                             <td>{{ producto.date_release | date: 'dd/MM/yyyy' }}</td>
                             <td>{{ producto.date_revision | date: 'dd/MM/yyyy' }}</td>
+                            <td>
+                                <div class="custom-dropdown">
+                                    <input type="checkbox" id="dropdown-toggle-{{ producto.id }}"
+                                        class="dropdown-toggle" (click)="alternarMenuDesplegable($event)" #casillaDeVerificacionDesplegable>
+                                <label for="dropdown-toggle-{{ producto.id }}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="16" width="4"
+                                        viewBox="0 0 128 512">
+                                        <path
+                                            d="M64 360a56 56 0 1 0 0 112 56 56 0 1 0 0-112zm0-160a56 56 0 1 0 0 112 56 56 0 1 0 0-112zM120 96A56 56 0 1 0 8 96a56 56 0 1 0 112 0z" />
+                                    </svg>
+                                </label>
+                                <div class="dropdown-menu">
+                                    <button class="dropdown-button-editar" (click)="editarProducto(producto)">
+                                        <fa-icon class="icon" [icon]="faEditar"></fa-icon>
+                                    </button>
+
+                                    <button class="dropdown-button-eliminar" (click)="eliminarProducto(producto)">
+                                        <fa-icon class="icon" [icon]="faBorrar"></fa-icon>
+                                    </button>
+                                </div>
+                                </div>
+                            </td>
                         </tr>
                     </ng-container>
                     <ng-template #hayResultados>

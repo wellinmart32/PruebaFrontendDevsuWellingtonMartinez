@@ -3,8 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FiltroBusquedaPipe } from './compartidos/personalizado/filtro-busqueda.pipe';
 import { HttpClientModule } from '@angular/common/http';
+import { PersonalizadoModule } from './compartidos/personalizado/personalizado.module';
 
 @NgModule({
   declarations: [
@@ -13,7 +13,8 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    PersonalizadoModule
   ],
   providers: [],
   bootstrap: [AppComponent]

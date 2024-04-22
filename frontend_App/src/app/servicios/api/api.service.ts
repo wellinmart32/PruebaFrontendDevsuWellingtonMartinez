@@ -15,8 +15,23 @@ export class ApiService {
     private http: HttpClient
   ) { }
 
-  obtenerDatos(endpoint: string, parametros?: HttpParams): Observable<any> {
+  obtenerDatos(puntoFinal: string, parametros?: HttpParams): Observable<any> {
     let cabeceras = this.cabeceras;
-    return parametros ? this.http.get<any>(`${this.url}/${endpoint}`, { params: parametros, headers: cabeceras }) : this.http.get<any>(`${this.url}/${endpoint}`, { headers: cabeceras });
+    return parametros ? this.http.get<any>(`${this.url}/${puntoFinal}`, { params: parametros, headers: cabeceras }) : this.http.get<any>(`${this.url}/${puntoFinal}`, { headers: cabeceras });
+  }
+
+  crearRegistro(puntoFinal: string, cuerpo: any): Observable<any> {
+    let cabeceras = this.cabeceras;
+    return this.http.post<any>(`${this.url}/${puntoFinal}`, cuerpo, { headers: cabeceras });
+  }
+
+  editarRegistro(puntoFinal: string, cuerpo: any, parametros?: HttpParams): Observable<any> {
+    let cabeceras = this.cabeceras;
+    return parametros ? this.http.put<any>(`${this.url}/${puntoFinal}`, cuerpo, { params: parametros, headers: cabeceras }) : this.http.put<any>(`${this.url}/${puntoFinal}`, cuerpo, { headers: cabeceras });
+  }
+
+  eliminarRegistro(puntoFinal: string, parametros?: HttpParams): Observable<any> {
+    let cabeceras = this.cabeceras;
+    return parametros ? this.http.delete<any>(`${this.url}/${puntoFinal}`, { params: parametros, headers: cabeceras }) : this.http.delete<any>(`${this.url}/${puntoFinal}`, { headers: cabeceras });
   }
 }
