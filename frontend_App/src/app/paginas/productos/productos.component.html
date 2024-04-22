@@ -4,82 +4,83 @@
             <input class="search-bar" type="text" placeholder="Buscar..." [(ngModel)]="terminoBusqueda" />
             <button class="button-add" (click)="agregarProducto()">Agregar</button>
         </div>
-    </div>
 
-    <div class="container">
-        <div class="table-container">
-            <table class="custom-table">
-                <thead>
-                    <tr>
-                        <th style="text-align: center;">Logo</th>
-                        <th>Nombre del product</th>
-                        <th>Descripción</th>
-                        <th>Fecha de liberación</th>
-                        <th>Fecha de restauración</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <ng-container *ngIf="(productosPaginados | filtroBusqueda:terminoBusqueda).length > 0; else hayResultados">
-                        <tr *ngFor="let producto of productosPaginados | filtroBusqueda:terminoBusqueda">
-                            <td><img [src]="producto.logo" alt="logo" width="50" height="50"></td>
-                            <td>{{ producto.name }}</td>
-                            <td>{{ producto.description }}</td>
-                            <td>{{ producto.date_release | date: 'dd/MM/yyyy' }}</td>
-                            <td>{{ producto.date_revision | date: 'dd/MM/yyyy' }}</td>
-                            <td>
-                                <div class="custom-dropdown">
-                                    <input type="checkbox" id="dropdown-toggle-{{ producto.id }}"
-                                        class="dropdown-toggle" (click)="alternarMenuDesplegable($event)" #casillaDeVerificacionDesplegable>
-                                <label for="dropdown-toggle-{{ producto.id }}">
-                                    <svg xmlns="http://www.w3.org/2000/svg" height="16" width="4"
-                                        viewBox="0 0 128 512">
-                                        <path
-                                            d="M64 360a56 56 0 1 0 0 112 56 56 0 1 0 0-112zm0-160a56 56 0 1 0 0 112 56 56 0 1 0 0-112zM120 96A56 56 0 1 0 8 96a56 56 0 1 0 112 0z" />
-                                    </svg>
-                                </label>
-                                <div class="dropdown-menu">
-                                    <button class="dropdown-button-editar" (click)="editarProducto(producto)">
-                                        <fa-icon class="icon" [icon]="faEditar"></fa-icon>
-                                    </button>
-
-                                    <button class="dropdown-button-eliminar" (click)="eliminarProducto(producto)">
-                                        <fa-icon class="icon" [icon]="faBorrar"></fa-icon>
-                                    </button>
-                                </div>
-                                </div>
-                            </td>
-                        </tr>
-                    </ng-container>
-                    <ng-template #hayResultados>
+        <div class="container">
+            <div class="table-container">
+                <table class="custom-table">
+                    <thead>
                         <tr>
-                            <td colspan="5">No se encontraron resultados</td>
+                            <th style="text-align: center;">Logo</th>
+                            <th>Nombre del producto</th>
+                            <th>Descripción</th>
+                            <th>Fecha de liberación</th>
+                            <th>Fecha de restauración</th>
+                            <th></th>
                         </tr>
-                    </ng-template>
-                </tbody>
-            </table>
-        </div>
+                    </thead>
+                    <tbody>
+                        <ng-container *ngIf="(productosPaginados | filtroBusqueda:terminoBusqueda).length > 0; else hayResultados">
+                            <tr *ngFor="let producto of productosPaginados | filtroBusqueda:terminoBusqueda">
+                                <td><img [src]="producto.logo" alt="logo" width="50" height="50"></td>
+                                <td>{{ producto.name }}</td>
+                                <td>{{ producto.description }}</td>
+                                <td>{{ producto.date_release | date: 'dd/MM/yyyy' }}</td>
+                                <td>{{ producto.date_revision | date: 'dd/MM/yyyy' }}</td>
+                                <td>
+                                    <div class="custom-dropdown">
+                                        <input type="checkbox" id="dropdown-toggle-{{ producto.id }}"
+                                            class="dropdown-toggle" (click)="alternarMenuDesplegable($event)" #casillaDeVerificacionDesplegable>
+                                    <label for="dropdown-toggle-{{ producto.id }}">
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="16" width="4"
+                                            viewBox="0 0 128 512">
+                                            <path
+                                                d="M64 360a56 56 0 1 0 0 112 56 56 0 1 0 0-112zm0-160a56 56 0 1 0 0 112 56 56 0 1 0 0-112zM120 96A56 56 0 1 0 8 96a56 56 0 1 0 112 0z" />
+                                        </svg>
+                                    </label>
+                                    <div class="dropdown-menu">
+                                        <button class="dropdown-button-editar" (click)="editarProducto(producto)">
+                                            <fa-icon class="icon" [icon]="faEditar"></fa-icon>
+                                        </button>
 
-        <div class="results-info">
-            <div class="pagination-results">
-                {{ listaProductos.length }} Resultados
-                <select class="pagination-square" [(ngModel)]="itemsPorPagina">
-                    <option *ngFor="let i of listaItemsPorPagina" [value]="i.valor">{{ i.etiqueta }}</option>
-                </select>
+                                        <button class="dropdown-button-eliminar" (click)="eliminarProducto(producto)">
+                                            <fa-icon class="icon" [icon]="faBorrar"></fa-icon>
+                                        </button>
+                                    </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </ng-container>
+                        <ng-template #hayResultados>
+                            <tr>
+                                <td colspan="5">No se encontraron resultados</td>
+                            </tr>
+                        </ng-template>
+                    </tbody>
+                </table>
             </div>
 
-            <div class="pagination-container">
-                <button class="icon-button" (click)="irAPagina(paginaActual - 1)" [disabled]="paginaActual === 1">
-                    <fa-icon class="icon" [icon]="faFlechaIzquierda"></fa-icon>
-                </button>
-                <div class="page-info">
-                    Página {{ paginaActual }} de {{ paginasTotales }}
+            <div class="results-info">
+                <div class="pagination-results">
+                    {{ listaProductos.length }} Resultados
+                    <select class="pagination-square" [(ngModel)]="itemsPorPagina">
+                        <option *ngFor="let i of listaItemsPorPagina" [value]="i.valor">{{ i.etiqueta }}</option>
+                    </select>
                 </div>
-                <button class="icon-button" (click)="irAPagina(paginaActual + 1)"
-                    [disabled]="paginaActual === paginasTotales">
-                    <fa-icon class="icon" [icon]="faFlechaDerecha"></fa-icon>
-                </button>
+
+                <div class="pagination-container">
+                    <button class="icon-button" (click)="irAPagina(paginaActual - 1)" [disabled]="paginaActual === 1">
+                        <fa-icon class="icon" [icon]="faFlechaIzquierda"></fa-icon>
+                    </button>
+                    <div class="page-info">
+                        Página {{ paginaActual }} de {{ paginasTotales }}
+                    </div>
+                    <button class="icon-button" (click)="irAPagina(paginaActual + 1)"
+                        [disabled]="paginaActual === paginasTotales">
+                        <fa-icon class="icon" [icon]="faFlechaDerecha"></fa-icon>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
 </div>
-
+<app-control-giratorio [mostrar]="mostrarControlGiratorio"></app-control-giratorio>
